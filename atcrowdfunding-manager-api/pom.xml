@@ -1,8 +1,30 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>com.hr.atcrowdfunding</groupId>
-  <artifactId>atcrowdfunding-manager-api</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <name>atcrowdfunding-manager-api</name>
-  <description>存放接口：service和DAO</description>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<artifactId>atcrowdfunding-manager-api</artifactId>
+
+	<name>atcrowdfunding-manager-api</name>
+	<description>存放接口：service和DAO</description>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.hr.atcrowdfunding</groupId>
+			<artifactId>atcrowdfunding-bean</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis</artifactId>
+		</dependency>
+		
+	</dependencies>
+
+	<parent>
+		<groupId>com.hr.atcrowdfunding</groupId>
+		<artifactId>atcrowdfunding-parent</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>../atcrowdfunding-parent/pom.xml</relativePath>
+	</parent>
 </project>
