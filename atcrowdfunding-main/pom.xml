@@ -9,7 +9,7 @@
 	<!-- 继承 -->
 	<parent>
 		<groupId>com.hr.atcrowdfunding</groupId>
-		<artifactId>arcrowdfunding-parent</artifactId>
+		<artifactId>atcrowdfunding-parent</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 		<relativePath>../atcrowdfunding-parent/pom.xml</relativePath>
 	</parent>
