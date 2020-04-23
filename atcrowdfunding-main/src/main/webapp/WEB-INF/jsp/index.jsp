@@ -8,10 +8,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
 <meta name="author" content="">
-<link rel="stylesheet"
+
+<%@ include file="/WEB-INF/jsp/common/css.jsp"%>
+<%-- <link rel="stylesheet"
 	href="${PATH}/static/bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" href="${PATH}/static/css/font-awesome.min.css">
-<link rel="stylesheet" href="${PATH}/static/css/carousel.css">
+<link rel="stylesheet" href="${PATH}/static/css/carousel.css"> --%>
 <style>
 h3 {
 	font-weight: bold;
@@ -214,8 +216,7 @@ h3.break>a {
 					<div class="navbar-header">
 						<a class="navbar-brand" href="index.html" style="font-size: 32px;">尚筹网-创意产品众筹平台</a>
 					</div>
-					<div id="navbar" class="navbar-collapse collapse"
-						style="float: right;">
+					<div id="navbar" class="navbar-collapse collapse" style="float: right;">
 						<ul class="nav navbar-nav navbar-right">
 							<li><a href="login">登录</a></li>
 							<li><a href="reg.html">注册</a></li>
@@ -238,8 +239,7 @@ h3.break>a {
 			<li data-target="#myCarousel" data-slide-to="2"></li>
 		</ol>
 		<div class="carousel-inner" role="listbox">
-			<div class="item active"
-				onclick="window.location.href='project.html'"
+			<div class="item active" onclick="window.location.href='project.html'"
 				style="cursor: pointer;">
 				<img src="${PATH}/static/img/carousel-1.jpg" alt="First slide">
 			</div>
@@ -256,9 +256,8 @@ h3.break>a {
 			data-slide="prev"> <span class="glyphicon glyphicon-chevron-left"></span>
 			<span class="sr-only">Previous</span>
 		</a> <a class="right carousel-control" href="#myCarousel" role="button"
-			data-slide="next"> <span
-			class="glyphicon glyphicon-chevron-right"></span> <span
-			class="sr-only">Next</span>
+			data-slide="next"> <span class="glyphicon glyphicon-chevron-right"></span>
+			<span class="sr-only">Next</span>
 		</a>
 	</div>
 	<!-- /.carousel -->
@@ -274,8 +273,7 @@ h3.break>a {
 		<div class="row">
 			<div class="col-lg-4">
 				<img class="img-circle" src="${PATH}/static/img/p1.jpg"
-					alt="Generic placeholder image"
-					style="width: 140px; height: 140px;">
+					alt="Generic placeholder image" style="width: 140px; height: 140px;">
 				<h2>智能高清监控机器人</h2>
 				<p>可爱的造型，摄像安防远程互联的全能设计，让你随时随地守护您的家人，陪伴你的生活。</p>
 				<p>
@@ -286,8 +284,7 @@ h3.break>a {
 			<!-- /.col-lg-4 -->
 			<div class="col-lg-4">
 				<img class="img-circle" src="${PATH}/static/img/p2.jpg"
-					alt="Generic placeholder image"
-					style="width: 140px; height: 140px;">
+					alt="Generic placeholder image" style="width: 140px; height: 140px;">
 				<h2>NEOKA智能手环</h2>
 				<p>要运动更要安全，这款、名为“蝶舞”的NEOKA-V9100智能运动手环为“安全运动而生”。</p>
 				<p>
@@ -298,8 +295,7 @@ h3.break>a {
 			<!-- /.col-lg-4 -->
 			<div class="col-lg-4">
 				<img class="img-circle" src="${PATH}/static/img/p3.png"
-					alt="Generic placeholder image"
-					style="width: 140px; height: 140px;">
+					alt="Generic placeholder image" style="width: 140px; height: 140px;">
 				<h2>驱蚊扣</h2>
 				<p>
 					随处使用的驱蚊纽扣，<br>解决夏季蚊虫问题。
@@ -336,19 +332,17 @@ h3.break>a {
 											</h3>
 											<p>
 											<div style="float: left;">
-												<i class="glyphicon glyphicon-screenshot" title="目标金额"></i>
-												$20,000
+												<i class="glyphicon glyphicon-screenshot" title="目标金额"></i> $20,000
 											</div>
 											<div style="float: right;">
-												<i title="截至日期" class="glyphicon glyphicon-calendar"></i>
-												2017-20-20
+												<i title="截至日期" class="glyphicon glyphicon-calendar"></i> 2017-20-20
 											</div>
 											</p>
 											<br>
 											<div class="progress" style="margin-bottom: 4px;">
-												<div class="progress-bar progress-bar-success"
-													role="progressbar" aria-valuenow="40" aria-valuemin="0"
-													aria-valuemax="100" style="width: 40%">
+												<div class="progress-bar progress-bar-success" role="progressbar"
+													aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"
+													style="width: 40%">
 													<span>40% </span>
 												</div>
 											</div>
@@ -369,19 +363,17 @@ h3.break>a {
 											</h3>
 											<p>
 											<div style="float: left;">
-												<i class="glyphicon glyphicon-screenshot" title="目标金额"></i>
-												$20,000
+												<i class="glyphicon glyphicon-screenshot" title="目标金额"></i> $20,000
 											</div>
 											<div style="float: right;">
-												<i title="截至日期" class="glyphicon glyphicon-calendar"></i>
-												2017-20-20
+												<i title="截至日期" class="glyphicon glyphicon-calendar"></i> 2017-20-20
 											</div>
 											</p>
 											<br>
 											<div class="progress" style="margin-bottom: 4px;">
-												<div class="progress-bar progress-bar-success"
-													role="progressbar" aria-valuenow="40" aria-valuemin="0"
-													aria-valuemax="100" style="width: 40%">
+												<div class="progress-bar progress-bar-success" role="progressbar"
+													aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"
+													style="width: 40%">
 													<span>40% </span>
 												</div>
 											</div>
@@ -402,19 +394,17 @@ h3.break>a {
 											</h3>
 											<p>
 											<div style="float: left;">
-												<i class="glyphicon glyphicon-screenshot" title="目标金额"></i>
-												$20,000
+												<i class="glyphicon glyphicon-screenshot" title="目标金额"></i> $20,000
 											</div>
 											<div style="float: right;">
-												<i title="截至日期" class="glyphicon glyphicon-calendar"></i>
-												2017-20-20
+												<i title="截至日期" class="glyphicon glyphicon-calendar"></i> 2017-20-20
 											</div>
 											</p>
 											<br>
 											<div class="progress" style="margin-bottom: 4px;">
-												<div class="progress-bar progress-bar-success"
-													role="progressbar" aria-valuenow="40" aria-valuemin="0"
-													aria-valuemax="100" style="width: 40%">
+												<div class="progress-bar progress-bar-success" role="progressbar"
+													aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"
+													style="width: 40%">
 													<span>40% </span>
 												</div>
 											</div>
@@ -435,19 +425,17 @@ h3.break>a {
 											</h3>
 											<p>
 											<div style="float: left;">
-												<i class="glyphicon glyphicon-screenshot" title="目标金额"></i>
-												$20,000
+												<i class="glyphicon glyphicon-screenshot" title="目标金额"></i> $20,000
 											</div>
 											<div style="float: right;">
-												<i title="截至日期" class="glyphicon glyphicon-calendar"></i>
-												2017-20-20
+												<i title="截至日期" class="glyphicon glyphicon-calendar"></i> 2017-20-20
 											</div>
 											</p>
 											<br>
 											<div class="progress" style="margin-bottom: 4px;">
-												<div class="progress-bar progress-bar-success"
-													role="progressbar" aria-valuenow="40" aria-valuemin="0"
-													aria-valuemax="100" style="width: 40%">
+												<div class="progress-bar progress-bar-success" role="progressbar"
+													aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"
+													style="width: 40%">
 													<span>40% </span>
 												</div>
 											</div>
@@ -490,19 +478,17 @@ h3.break>a {
 											</h3>
 											<p>
 											<div style="float: left;">
-												<i class="glyphicon glyphicon-screenshot" title="目标金额"></i>
-												$20,000
+												<i class="glyphicon glyphicon-screenshot" title="目标金额"></i> $20,000
 											</div>
 											<div style="float: right;">
-												<i title="截至日期" class="glyphicon glyphicon-calendar"></i>
-												2017-20-20
+												<i title="截至日期" class="glyphicon glyphicon-calendar"></i> 2017-20-20
 											</div>
 											</p>
 											<br>
 											<div class="progress" style="margin-bottom: 4px;">
-												<div class="progress-bar progress-bar-success"
-													role="progressbar" aria-valuenow="40" aria-valuemin="0"
-													aria-valuemax="100" style="width: 40%">
+												<div class="progress-bar progress-bar-success" role="progressbar"
+													aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"
+													style="width: 40%">
 													<span>40% </span>
 												</div>
 											</div>
@@ -523,19 +509,17 @@ h3.break>a {
 											</h3>
 											<p>
 											<div style="float: left;">
-												<i class="glyphicon glyphicon-screenshot" title="目标金额"></i>
-												$20,000
+												<i class="glyphicon glyphicon-screenshot" title="目标金额"></i> $20,000
 											</div>
 											<div style="float: right;">
-												<i title="截至日期" class="glyphicon glyphicon-calendar"></i>
-												2017-20-20
+												<i title="截至日期" class="glyphicon glyphicon-calendar"></i> 2017-20-20
 											</div>
 											</p>
 											<br>
 											<div class="progress" style="margin-bottom: 4px;">
-												<div class="progress-bar progress-bar-success"
-													role="progressbar" aria-valuenow="40" aria-valuemin="0"
-													aria-valuemax="100" style="width: 40%">
+												<div class="progress-bar progress-bar-success" role="progressbar"
+													aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"
+													style="width: 40%">
 													<span>40% </span>
 												</div>
 											</div>
@@ -556,19 +540,17 @@ h3.break>a {
 											</h3>
 											<p>
 											<div style="float: left;">
-												<i class="glyphicon glyphicon-screenshot" title="目标金额"></i>
-												$20,000
+												<i class="glyphicon glyphicon-screenshot" title="目标金额"></i> $20,000
 											</div>
 											<div style="float: right;">
-												<i title="截至日期" class="glyphicon glyphicon-calendar"></i>
-												2017-20-20
+												<i title="截至日期" class="glyphicon glyphicon-calendar"></i> 2017-20-20
 											</div>
 											</p>
 											<br>
 											<div class="progress" style="margin-bottom: 4px;">
-												<div class="progress-bar progress-bar-success"
-													role="progressbar" aria-valuenow="40" aria-valuemin="0"
-													aria-valuemax="100" style="width: 40%">
+												<div class="progress-bar progress-bar-success" role="progressbar"
+													aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"
+													style="width: 40%">
 													<span>40% </span>
 												</div>
 											</div>
@@ -589,19 +571,17 @@ h3.break>a {
 											</h3>
 											<p>
 											<div style="float: left;">
-												<i class="glyphicon glyphicon-screenshot" title="目标金额"></i>
-												$20,000
+												<i class="glyphicon glyphicon-screenshot" title="目标金额"></i> $20,000
 											</div>
 											<div style="float: right;">
-												<i title="截至日期" class="glyphicon glyphicon-calendar"></i>
-												2017-20-20
+												<i title="截至日期" class="glyphicon glyphicon-calendar"></i> 2017-20-20
 											</div>
 											</p>
 											<br>
 											<div class="progress" style="margin-bottom: 4px;">
-												<div class="progress-bar progress-bar-success"
-													role="progressbar" aria-valuenow="40" aria-valuemin="0"
-													aria-valuemax="100" style="width: 40%">
+												<div class="progress-bar progress-bar-success" role="progressbar"
+													aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"
+													style="width: 40%">
 													<span>40% </span>
 												</div>
 											</div>
@@ -644,19 +624,17 @@ h3.break>a {
 											</h3>
 											<p>
 											<div style="float: left;">
-												<i class="glyphicon glyphicon-screenshot" title="目标金额"></i>
-												$20,000
+												<i class="glyphicon glyphicon-screenshot" title="目标金额"></i> $20,000
 											</div>
 											<div style="float: right;">
-												<i title="截至日期" class="glyphicon glyphicon-calendar"></i>
-												2017-20-20
+												<i title="截至日期" class="glyphicon glyphicon-calendar"></i> 2017-20-20
 											</div>
 											</p>
 											<br>
 											<div class="progress" style="margin-bottom: 4px;">
-												<div class="progress-bar progress-bar-success"
-													role="progressbar" aria-valuenow="40" aria-valuemin="0"
-													aria-valuemax="100" style="width: 40%">
+												<div class="progress-bar progress-bar-success" role="progressbar"
+													aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"
+													style="width: 40%">
 													<span>40% </span>
 												</div>
 											</div>
@@ -677,19 +655,17 @@ h3.break>a {
 											</h3>
 											<p>
 											<div style="float: left;">
-												<i class="glyphicon glyphicon-screenshot" title="目标金额"></i>
-												$20,000
+												<i class="glyphicon glyphicon-screenshot" title="目标金额"></i> $20,000
 											</div>
 											<div style="float: right;">
-												<i title="截至日期" class="glyphicon glyphicon-calendar"></i>
-												2017-20-20
+												<i title="截至日期" class="glyphicon glyphicon-calendar"></i> 2017-20-20
 											</div>
 											</p>
 											<br>
 											<div class="progress" style="margin-bottom: 4px;">
-												<div class="progress-bar progress-bar-success"
-													role="progressbar" aria-valuenow="40" aria-valuemin="0"
-													aria-valuemax="100" style="width: 40%">
+												<div class="progress-bar progress-bar-success" role="progressbar"
+													aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"
+													style="width: 40%">
 													<span>40% </span>
 												</div>
 											</div>
@@ -710,19 +686,17 @@ h3.break>a {
 											</h3>
 											<p>
 											<div style="float: left;">
-												<i class="glyphicon glyphicon-screenshot" title="目标金额"></i>
-												$20,000
+												<i class="glyphicon glyphicon-screenshot" title="目标金额"></i> $20,000
 											</div>
 											<div style="float: right;">
-												<i title="截至日期" class="glyphicon glyphicon-calendar"></i>
-												2017-20-20
+												<i title="截至日期" class="glyphicon glyphicon-calendar"></i> 2017-20-20
 											</div>
 											</p>
 											<br>
 											<div class="progress" style="margin-bottom: 4px;">
-												<div class="progress-bar progress-bar-success"
-													role="progressbar" aria-valuenow="40" aria-valuemin="0"
-													aria-valuemax="100" style="width: 40%">
+												<div class="progress-bar progress-bar-success" role="progressbar"
+													aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"
+													style="width: 40%">
 													<span>40% </span>
 												</div>
 											</div>
@@ -743,19 +717,17 @@ h3.break>a {
 											</h3>
 											<p>
 											<div style="float: left;">
-												<i class="glyphicon glyphicon-screenshot" title="目标金额"></i>
-												$20,000
+												<i class="glyphicon glyphicon-screenshot" title="目标金额"></i> $20,000
 											</div>
 											<div style="float: right;">
-												<i title="截至日期" class="glyphicon glyphicon-calendar"></i>
-												2017-20-20
+												<i title="截至日期" class="glyphicon glyphicon-calendar"></i> 2017-20-20
 											</div>
 											</p>
 											<br>
 											<div class="progress" style="margin-bottom: 4px;">
-												<div class="progress-bar progress-bar-success"
-													role="progressbar" aria-valuenow="40" aria-valuemin="0"
-													aria-valuemax="100" style="width: 40%">
+												<div class="progress-bar progress-bar-success" role="progressbar"
+													aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"
+													style="width: 40%">
 													<span>40% </span>
 												</div>
 											</div>
@@ -798,19 +770,17 @@ h3.break>a {
 											</h3>
 											<p>
 											<div style="float: left;">
-												<i class="glyphicon glyphicon-screenshot" title="目标金额"></i>
-												$20,000
+												<i class="glyphicon glyphicon-screenshot" title="目标金额"></i> $20,000
 											</div>
 											<div style="float: right;">
-												<i title="截至日期" class="glyphicon glyphicon-calendar"></i>
-												2017-20-20
+												<i title="截至日期" class="glyphicon glyphicon-calendar"></i> 2017-20-20
 											</div>
 											</p>
 											<br>
 											<div class="progress" style="margin-bottom: 4px;">
-												<div class="progress-bar progress-bar-success"
-													role="progressbar" aria-valuenow="40" aria-valuemin="0"
-													aria-valuemax="100" style="width: 40%">
+												<div class="progress-bar progress-bar-success" role="progressbar"
+													aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"
+													style="width: 40%">
 													<span>40% </span>
 												</div>
 											</div>
@@ -831,19 +801,17 @@ h3.break>a {
 											</h3>
 											<p>
 											<div style="float: left;">
-												<i class="glyphicon glyphicon-screenshot" title="目标金额"></i>
-												$20,000
+												<i class="glyphicon glyphicon-screenshot" title="目标金额"></i> $20,000
 											</div>
 											<div style="float: right;">
-												<i title="截至日期" class="glyphicon glyphicon-calendar"></i>
-												2017-20-20
+												<i title="截至日期" class="glyphicon glyphicon-calendar"></i> 2017-20-20
 											</div>
 											</p>
 											<br>
 											<div class="progress" style="margin-bottom: 4px;">
-												<div class="progress-bar progress-bar-success"
-													role="progressbar" aria-valuenow="40" aria-valuemin="0"
-													aria-valuemax="100" style="width: 40%">
+												<div class="progress-bar progress-bar-success" role="progressbar"
+													aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"
+													style="width: 40%">
 													<span>40% </span>
 												</div>
 											</div>
@@ -864,19 +832,17 @@ h3.break>a {
 											</h3>
 											<p>
 											<div style="float: left;">
-												<i class="glyphicon glyphicon-screenshot" title="目标金额"></i>
-												$20,000
+												<i class="glyphicon glyphicon-screenshot" title="目标金额"></i> $20,000
 											</div>
 											<div style="float: right;">
-												<i title="截至日期" class="glyphicon glyphicon-calendar"></i>
-												2017-20-20
+												<i title="截至日期" class="glyphicon glyphicon-calendar"></i> 2017-20-20
 											</div>
 											</p>
 											<br>
 											<div class="progress" style="margin-bottom: 4px;">
-												<div class="progress-bar progress-bar-success"
-													role="progressbar" aria-valuenow="40" aria-valuemin="0"
-													aria-valuemax="100" style="width: 40%">
+												<div class="progress-bar progress-bar-success" role="progressbar"
+													aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"
+													style="width: 40%">
 													<span>40% </span>
 												</div>
 											</div>
@@ -897,19 +863,17 @@ h3.break>a {
 											</h3>
 											<p>
 											<div style="float: left;">
-												<i class="glyphicon glyphicon-screenshot" title="目标金额"></i>
-												$20,000
+												<i class="glyphicon glyphicon-screenshot" title="目标金额"></i> $20,000
 											</div>
 											<div style="float: right;">
-												<i title="截至日期" class="glyphicon glyphicon-calendar"></i>
-												2017-20-20
+												<i title="截至日期" class="glyphicon glyphicon-calendar"></i> 2017-20-20
 											</div>
 											</p>
 											<br>
 											<div class="progress" style="margin-bottom: 4px;">
-												<div class="progress-bar progress-bar-success"
-													role="progressbar" aria-valuenow="40" aria-valuemin="0"
-													aria-valuemax="100" style="width: 40%">
+												<div class="progress-bar progress-bar-success" role="progressbar"
+													aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"
+													style="width: 40%">
 													<span>40% </span>
 												</div>
 											</div>
@@ -930,7 +894,8 @@ h3.break>a {
 		</div>
 
 		<!-- FOOTER -->
-		<div class="container">
+		<%@ include file="/WEB-INF/jsp/common/footer.jsp"%>
+		<!-- <div class="container">
 			<div class="row clearfix">
 				<div class="col-md-12 column">
 					<div id="footer">
@@ -941,22 +906,22 @@ h3.break>a {
 								rel="nofollow" href="http://www.atguigu.com">网站地图</a> | <a
 								rel="nofollow" href="http://www.atguigu.com">联系我们</a>
 						</div>
-						<div class="copyRight">Copyright ?2017-2017atguigu.com 版权所有
-						</div>
+						<div class="copyRight">Copyright ?2017-2017atguigu.com 版权所有</div>
 					</div>
 
 				</div>
 			</div>
-		</div>
+		</div> -->
 
 	</div>
 	<!-- /.container -->
 
 
-	<script src="${PATH}/static/jquery/jquery-2.1.1.min.js"></script>
+	<%-- <script src="${PATH}/static/jquery/jquery-2.1.1.min.js"></script>
 	<script src="${PATH}/static/bootstrap/js/bootstrap.min.js"></script>
 	<script src="${PATH}/static/script/docs.min.js"></script>
-	<script src="${PATH}/static/script/back-to-top.js"></script>
+	<script src="${PATH}/static/script/back-to-top.js"></script> --%>
+	<%@ include file="/WEB-INF/jsp/common/js.jsp"%>
 	<script>
 		$(".thumbnail img").css("cursor", "pointer");
 		$(".thumbnail img").click(function() {

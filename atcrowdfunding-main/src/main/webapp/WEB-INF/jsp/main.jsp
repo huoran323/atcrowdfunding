@@ -9,10 +9,12 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<link rel="stylesheet"
+<!-- 静态包含 -->
+<%@ include file="/WEB-INF/jsp/common/css.jsp"%>
+<%-- <link rel="stylesheet"
 	href="${PATH}/static/bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" href="${PATH}/static/css/font-awesome.min.css">
-<link rel="stylesheet" href="${PATH}/static/css/main.css">
+<link rel="stylesheet" href="${PATH}/static/css/main.css"> --%>
 <style>
 .tree li {
 	list-style-type: none;
@@ -31,7 +33,7 @@
 
 <body>
 
-	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+	<%-- <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 		<div class="container-fluid">
 			<div class="navbar-header">
 				<div>
@@ -71,10 +73,14 @@
 				</form>
 			</div>
 		</div>
-	</nav>
+	</nav> --%>
+	
+	<!-- 动态包含 -->
+	<jsp:include page="/WEB-INF/jsp/common/top.jsp"></jsp:include>
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-sm-3 col-md-2 sidebar">
+		<jsp:include page="/WEB-INF/jsp/common/sidebar.jsp"></jsp:include>
+			<!-- <div class="col-sm-3 col-md-2 sidebar">
 				<div class="tree">
 					<ul style="padding-left: 0px;" class="list-group">
 						<li class="list-group-item tree-closed"><a href="main.html"><i
@@ -127,7 +133,7 @@
 								class="glyphicon glyphicon-list-alt"></i> 参数管理</a></li>
 					</ul>
 				</div>
-			</div>
+			</div> -->
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 				<h1 class="page-header">控制面板</h1>
 
@@ -160,9 +166,10 @@
 			</div>
 		</div>
 	</div>
-	<script src="${PATH}/static/jquery/jquery-2.1.1.min.js"></script>
+	<%-- <script src="${PATH}/static/jquery/jquery-2.1.1.min.js"></script>
 	<script src="${PATH}/static/bootstrap/js/bootstrap.min.js"></script>
-	<script src="${PATH}/static/script/docs.min.js"></script>
+	<script src="${PATH}/static/script/docs.min.js"></script> --%>
+	<%@ include file="/WEB-INF/jsp/common/js.jsp"%>
 	<script type="text/javascript">
 		$(function() {
 			$(".list-group-item").click(function() {

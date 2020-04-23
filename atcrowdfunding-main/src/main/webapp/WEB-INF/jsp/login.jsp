@@ -10,10 +10,11 @@
 <meta name="description" content="">
 <meta name="keys" content="">
 <meta name="author" content="">
-<link rel="stylesheet"
+<%-- <link rel="stylesheet"
 	href="${PATH}/static/bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" href="${PATH}/static/css/font-awesome.min.css">
-<link rel="stylesheet" href="${PATH}/static/css/login.css">
+<link rel="stylesheet" href="${PATH}/static/css/login.css"> --%>
+<%@ include file="/WEB-INF/jsp/common/css.jsp"%>
 <style>
 </style>
 </head>
@@ -61,8 +62,9 @@
 				登录</a>
 		</form>
 	</div>
-	<script src="${PATH}/static/jquery/jquery-2.1.1.min.js"></script>
-	<script src="${PATH}/static/bootstrap/js/bootstrap.min.js"></script>
+	<%-- <script src="${PATH}/static/jquery/jquery-2.1.1.min.js"></script>
+	<script src="${PATH}/static/bootstrap/js/bootstrap.min.js"></script> --%>
+	<%@ include file="/WEB-INF/jsp/common/js.jsp"%>
 	<script>
 		function dologin() {
 			$("#loginForm").submit();
