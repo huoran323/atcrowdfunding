@@ -38,6 +38,17 @@ public class DispatcherController {
 		return "login";
 	}
 	
+	@RequestMapping("/logout")
+	public String logout(HttpSession session) {
+		
+		log.debug("注销系统...");
+		if (session != null) {
+			session.removeAttribute(Const.LOGIN_ADMIN);
+			session.invalidate();
+		}
+		return "redirect:/index";
+	}
+	
 	@RequestMapping("/doLogin")
 	public String doLogin(String loginacct, String userpswd, HttpSession session, Model model) {
 		
