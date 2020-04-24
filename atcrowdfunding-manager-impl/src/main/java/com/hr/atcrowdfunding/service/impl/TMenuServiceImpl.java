@@ -25,7 +25,6 @@ public class TMenuServiceImpl implements TMenuService {
 	@Override
 	public List<TMenu> listMenuAll() {
 		
-		
 		List<TMenu> menuList = new ArrayList<TMenu>(); // 只存放父菜单，但是将children属性赋值
 		Map<Integer, TMenu> cache = new HashMap<Integer, TMenu>();
 
