@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.github.pagehelper.PageInfo;
 import com.hr.atcrowdfunding.bean.TAdmin;
 import com.hr.atcrowdfunding.bean.TAdminExample;
 import com.hr.atcrowdfunding.exception.LoginException;
@@ -62,5 +63,17 @@ public class TAdminServiceImpl implements TAdminService {
 //		} else {
 //			throw new LoginException(Const.LOGIN_LOGINACCT_ERROR);
 //		}
+	}
+
+	@Override
+	public PageInfo<TAdmin> listAdminPage(Map<String, Object> paramMap) {
+		
+		TAdminExample example = new TAdminExample();
+		
+		List<TAdmin> list = adminMapper.selectByExample(example);
+		
+		PageInfo<TAdmin> page = new PageInfo<TAdmin>(list, 5);
+		
+		return page;
 	}
 }
