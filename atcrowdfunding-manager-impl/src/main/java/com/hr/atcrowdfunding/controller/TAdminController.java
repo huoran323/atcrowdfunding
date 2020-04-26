@@ -1,6 +1,8 @@
 package com.hr.atcrowdfunding.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.slf4j.Logger;
@@ -23,6 +25,23 @@ public class TAdminController {
 	
 	@Autowired
 	TAdminService adminService;
+	
+	@RequestMapping("/admin/doDeleteBatch")
+	public String doDelete(String ids, Integer pageNum) {
+		
+		String[] split = ids.split(",");
+		
+		List<Integer> idList = new ArrayList<Integer>();
+		
+		for(String idStr : split) {
+			int id = Integer.parseInt(idStr);
+			idList.add(id);
+		}
+		
+		adminService.deleteBatch(idList);
+		
+		return "redirect:/admin/index?pageNum="+pageNum;
+	}
 	
 	@RequestMapping("/admin/doDelete")
 	public String doDelete(Integer id, Integer pageNum) {

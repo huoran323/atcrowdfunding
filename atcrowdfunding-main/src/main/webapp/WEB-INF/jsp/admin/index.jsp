@@ -59,7 +59,7 @@ table tbody td:nth-child(even) {
 								<i class="glyphicon glyphicon-search"></i> 查询
 							</button>
 						</form>
-						<button type="button" class="btn btn-danger"
+						<button id="deleteBatchBtn" type="button" class="btn btn-danger"
 							style="float: right; margin-left: 10px;">
 							<i class=" glyphicon glyphicon-remove"></i> 删除
 						</button>
@@ -74,7 +74,7 @@ table tbody td:nth-child(even) {
 								<thead>
 									<tr>
 										<th width="30">#</th>
-										<th width="30"><input type="checkbox"></th>
+										<th width="30"><input id="selectAll" type="checkbox"></th>
 										<th>账号</th>
 										<th>名称</th>
 										<th>邮箱地址</th>
@@ -85,7 +85,7 @@ table tbody td:nth-child(even) {
 									<c:forEach items="${page.list}" var="admin" varStatus="status">
 										<tr>
 											<td>${status.count }</td>
-											<td><input type="checkbox"></td>
+											<td><input type="checkbox" adminId="${admin.id }"></td>
 											<td>${admin.loginacct }</td>
 											<td>${admin.username }</td>
 											<td>${admin.email }</td>
@@ -181,6 +181,42 @@ table tbody td:nth-child(even) {
 				}, function(index){
 					layer.close(index);
 				});
+			});
+			
+			$("#selectAll").click(function() {
+				//后代选择器，选择属性为checkbox的input框
+				$("tbody input[type='checkbox']").prop("checked",this.checked);
+			});
+			
+			$("#deleteBatchBtn").click(function() {
+				//获取所有选中的checkbox---->$("tbody input[type='checkbox']:checked")
+				var checkedBoxList = $("tbody input[type='checkbox']:checked");
+				
+				if (checkedBoxList.length == 0) {
+					layer.msg("请选中要删除的内容！");
+					return false;
+				}
+				
+				var ids = "";
+				var array = new Array();
+				$.each(checkedBoxList, function(i,e) {
+					//获取自定义的属性 id
+					var adminId = $(e).attr("adminId");
+					array.push(adminId);
+				});
+				ids = array.join(",");
+				
+				layer.confirm("您确定删除嘛？",{
+					btn: ["确定","取消"]
+				}, function(index) {
+					
+					window.location.href="${PATH}/admin/doDeleteBatch?pageNum=${page.pageNum}&ids="+ids;
+					
+					layer.close(index);
+				}, function(index){
+					layer.close(index);
+				});
+				
 			});
 		});
 	</script>
