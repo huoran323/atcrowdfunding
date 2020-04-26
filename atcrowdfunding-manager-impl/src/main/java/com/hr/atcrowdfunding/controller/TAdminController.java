@@ -22,7 +22,7 @@ public class TAdminController {
 	
 	@RequestMapping("/admin/index")
 	public String index(@RequestParam(value="pageNum", required=false, defaultValue="1")Integer pageNum, 
-						@RequestParam(value="pageSize", required=false, defaultValue="10")Integer pageSize,
+						@RequestParam(value="pageSize", required=false, defaultValue="2")Integer pageSize,
 						Model model) {
 		
 		PageHelper.startPage(pageNum, pageSize); //线程绑定，方便后面调用，不需要传参了
