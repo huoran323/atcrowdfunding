@@ -24,6 +24,14 @@ public class TAdminController {
 	@Autowired
 	TAdminService adminService;
 	
+	@RequestMapping("/admin/doDelete")
+	public String doDelete(Integer id, Integer pageNum) {
+		
+		adminService.deleteTAdmin(id);
+		
+		return "redirect:/admin/index?pageNum="+pageNum;
+	}
+	
 	//跳转修改页面
 	@RequestMapping("/admin/toUpdate")
 	public String toUpdate(Integer id, Model model) {

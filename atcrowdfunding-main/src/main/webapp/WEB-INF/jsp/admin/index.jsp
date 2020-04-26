@@ -96,7 +96,8 @@ table tbody td:nth-child(even) {
 												<button type="button" class="btn btn-primary btn-xs" onclick="window.location.href='${PATH}/admin/toUpdate?pageNum=${page.pageNum}&id=${admin.id }'">
 													<i class=" glyphicon glyphicon-pencil"></i>
 												</button>
-												<button type="button" class="btn btn-danger btn-xs">
+												<!-- 自定义属性adminId,用来作为删除的参数id,通过$(this).attr("adminId")属性值获取 -->
+												<button type="button" adminId="${admin.id }" class="deleteBtnClass btn btn-danger btn-xs" >
 													<i class=" glyphicon glyphicon-remove"></i>
 												</button>
 											</td>
@@ -164,6 +165,22 @@ table tbody td:nth-child(even) {
 						$("ul", this).show("fast");
 					}
 				}
+			});
+			
+			$(".deleteBtnClass").click(function() {
+				
+				var id = $(this).attr("adminId");
+				
+				layer.confirm("您确定删除嘛？",{
+					btn: ["确定","取消"]
+				}, function(index) {
+					
+					window.location.href="${PATH}/admin/doDelete?pageNum=${page.pageNum}&id="+id;
+					
+					layer.close(index);
+				}, function(index){
+					layer.close(index);
+				});
 			});
 		});
 	</script>
