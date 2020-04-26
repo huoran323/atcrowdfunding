@@ -47,15 +47,15 @@ table tbody td:nth-child(even) {
 						</h3>
 					</div>
 					<div class="panel-body">
-						<form class="form-inline" role="form" style="float: left;">
+						<form id="queryForm" class="form-inline" role="form" style="float: left;" action="${PATH }/admin/index" method="post">
 							<div class="form-group has-feedback">
 								<div class="input-group">
 									<div class="input-group-addon">查询条件</div>
-									<input class="form-control has-success" type="text"
+									<input class="form-control has-success" type="text" name="condition" value="${param.condition }"
 										placeholder="请输入查询条件">
 								</div>
 							</div>
-							<button type="button" class="btn btn-warning">
+							<button type="button" class="btn btn-warning" onclick="$('#queryForm').submit()")>
 								<i class="glyphicon glyphicon-search"></i> 查询
 							</button>
 						</form>
@@ -114,17 +114,17 @@ table tbody td:nth-child(even) {
 													<li class="disabled"><a href="#">上一页</a></li>
 												</c:if>
 												<c:if test="${!page.isFirstPage}">
-													<li><a href="${PATH }/admin/index?pageNum=${page.pageNum-1}">上一页</a></li>
+													<li><a href="${PATH }/admin/index?condition=${param.condition }&pageNum=${page.pageNum-1}">上一页</a></li>
 												</c:if>
 
 												<c:forEach items="${page.navigatepageNums }" var="num">
 													<c:if test="${num == page.pageNum }">
 														<li class="active"><a
-															href="${PATH }/admin/index?pageNum=${num}">${num } <span
+															href="${PATH }/admin/index?condition=${param.condition }&pageNum=${num}">${num } <span
 																class="sr-only">(current)</span></a></li>
 													</c:if>
 													<c:if test="${num != page.pageNum }">
-														<li><a href="${PATH }/admin/index?pageNum=${num}">${num }
+														<li><a href="${PATH }/admin/index?condition=${param.condition }&pageNum=${num}">${num }
 														</a></li>
 													</c:if>
 
@@ -135,7 +135,7 @@ table tbody td:nth-child(even) {
 													<li class="disabled"><a href="#">下一页</a></li>
 												</c:if>
 												<c:if test="${!page.isLastPage}">
-													<li><a href="${PATH }/admin/index?pageNum=${page.pageNum+1}">下一页</a></li>
+													<li><a href="${PATH }/admin/index?condition=${param.condition }&pageNum=${page.pageNum+1}">下一页</a></li>
 												</c:if>
 											</ul>
 										</td>

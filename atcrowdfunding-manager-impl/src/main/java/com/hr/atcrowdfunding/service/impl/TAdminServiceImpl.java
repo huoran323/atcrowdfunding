@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.github.pagehelper.PageInfo;
 import com.hr.atcrowdfunding.bean.TAdmin;
 import com.hr.atcrowdfunding.bean.TAdminExample;
+import com.hr.atcrowdfunding.bean.TAdminExample.Criteria;
 import com.hr.atcrowdfunding.exception.LoginException;
 import com.hr.atcrowdfunding.mapper.TAdminMapper;
 import com.hr.atcrowdfunding.service.TAdminService;
@@ -71,6 +72,23 @@ public class TAdminServiceImpl implements TAdminService {
 	public PageInfo<TAdmin> listAdminPage(Map<String, Object> paramMap) {
 		
 		TAdminExample example = new TAdminExample();
+		String condition = (String)paramMap.get("condition");
+		
+		if (!"".equals(condition)) {
+			//按照登录名模糊查询
+			example.createCriteria().andLoginacctLike("%"+condition+"%");
+			
+			//按照用户名模糊查询
+			Criteria criteria = example.createCriteria();
+			criteria.andUsernameLike("%"+condition+"%");
+			
+			//按照邮箱模糊查询
+			Criteria criteria2 = example.createCriteria();
+			criteria2.andEmailLike("%"+condition+"%");
+			
+			example.or(criteria);
+			example.or(criteria2);
+		}
 		
 		//根据时间进行倒序排列
 //		example.setOrderByClause("createtime desc");

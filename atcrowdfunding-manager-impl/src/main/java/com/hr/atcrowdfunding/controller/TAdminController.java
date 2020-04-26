@@ -72,13 +72,16 @@ public class TAdminController {
 	@RequestMapping("/admin/index")
 	public String index(@RequestParam(value="pageNum", required=false, defaultValue="1")Integer pageNum, 
 						@RequestParam(value="pageSize", required=false, defaultValue="2")Integer pageSize,
-						Model model) {
+						Model model,
+						@RequestParam(value="condition", required=false, defaultValue="")String condition) {
 		
 		log.debug("获取管理员列表");
 		
 		PageHelper.startPage(pageNum, pageSize); //线程绑定，方便后面调用，不需要传参了
 		
 		Map<String, Object> paramMap = new HashMap<String, Object>();
+		//添加查询条件
+		paramMap.put("condition", condition);
 		
 		PageInfo<TAdmin> page = adminService.listAdminPage(paramMap);
 		
