@@ -12,6 +12,7 @@ import com.hr.atcrowdfunding.bean.TAdminExample;
 import com.hr.atcrowdfunding.exception.LoginException;
 import com.hr.atcrowdfunding.mapper.TAdminMapper;
 import com.hr.atcrowdfunding.service.TAdminService;
+import com.hr.atcrowdfunding.util.AppDateUtils;
 import com.hr.atcrowdfunding.util.Const;
 import com.hr.atcrowdfunding.util.MD5Util;
 
@@ -65,15 +66,41 @@ public class TAdminServiceImpl implements TAdminService {
 //		}
 	}
 
+	//获取管理员列表
 	@Override
 	public PageInfo<TAdmin> listAdminPage(Map<String, Object> paramMap) {
 		
 		TAdminExample example = new TAdminExample();
+		
+		//根据时间进行倒序排列
+//		example.setOrderByClause("createtime desc");
 		
 		List<TAdmin> list = adminMapper.selectByExample(example);
 		
 		PageInfo<TAdmin> page = new PageInfo<TAdmin>(list, 5);
 		
 		return page;
+	}
+
+	@Override
+	public void saveTAdmin(TAdmin admin) {
+		
+		admin.setUserpswd(MD5Util.digest(Const.DEFAULT_USERPSWD));
+		admin.setCreatetime(AppDateUtils.getFormatTime());
+		
+		adminMapper.insertSelective(admin); //动态sql，有选择行保存
+	}
+
+	@Override
+	public TAdmin getTAdminById(Integer id) {
+		
+		
+		return adminMapper.selectByPrimaryKey(id);
+	}
+
+	@Override
+	public void updateTAdmin(TAdmin admin) {
+		
+		adminMapper.updateByPrimaryKeySelective(admin);
 	}
 }

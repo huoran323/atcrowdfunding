@@ -64,7 +64,7 @@ table tbody td:nth-child(even) {
 							<i class=" glyphicon glyphicon-remove"></i> 删除
 						</button>
 						<button type="button" class="btn btn-primary" style="float: right;"
-							onclick="window.location.href='add.html'">
+							onclick="window.location.href='${PATH}/admin/toAdd'">
 							<i class="glyphicon glyphicon-plus"></i> 新增
 						</button>
 						<br>
@@ -93,7 +93,7 @@ table tbody td:nth-child(even) {
 												<button type="button" class="btn btn-success btn-xs">
 													<i class=" glyphicon glyphicon-check"></i>
 												</button>
-												<button type="button" class="btn btn-primary btn-xs">
+												<button type="button" class="btn btn-primary btn-xs" onclick="window.location.href='${PATH}/admin/toUpdate?pageNum=${page.pageNum}&id=${admin.id }'">
 													<i class=" glyphicon glyphicon-pencil"></i>
 												</button>
 												<button type="button" class="btn btn-danger btn-xs">
@@ -118,12 +118,15 @@ table tbody td:nth-child(even) {
 
 												<c:forEach items="${page.navigatepageNums }" var="num">
 													<c:if test="${num == page.pageNum }">
-														<li class="active"><a href="${PATH }/admin/index?pageNum=${num}">${num } <span class="sr-only">(current)</span></a></li>
+														<li class="active"><a
+															href="${PATH }/admin/index?pageNum=${num}">${num } <span
+																class="sr-only">(current)</span></a></li>
 													</c:if>
 													<c:if test="${num != page.pageNum }">
-														<li><a href="${PATH }/admin/index?pageNum=${num}">${num } </a></li>
+														<li><a href="${PATH }/admin/index?pageNum=${num}">${num }
+														</a></li>
 													</c:if>
-													
+
 												</c:forEach>
 
 
@@ -162,12 +165,6 @@ table tbody td:nth-child(even) {
 					}
 				}
 			});
-		});
-		$("tbody .btn-success").click(function() {
-			window.location.href = "assignRole.html";
-		});
-		$("tbody .btn-primary").click(function() {
-			window.location.href = "edit.html";
 		});
 	</script>
 </body>
