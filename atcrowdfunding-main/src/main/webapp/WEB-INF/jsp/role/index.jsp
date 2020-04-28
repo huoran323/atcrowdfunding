@@ -76,20 +76,12 @@ table tbody td:nth-child(even) {
 									</tr>
 								</thead>
 								<tbody>
-									数据正在加载中...
-									
 								</tbody>
 								<tfoot>
 									<tr>
 										<td colspan="6" align="center">
 											<ul class="pagination">
-												<li class="disabled"><a href="#">上一页</a></li>
-												<li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
-												<li><a href="#">2</a></li>
-												<li><a href="#">3</a></li>
-												<li><a href="#">4</a></li>
-												<li><a href="#">5</a></li>
-												<li><a href="#">下一页</a></li>
+												
 											</ul>
 										</td>
 									</tr>
@@ -116,44 +108,97 @@ table tbody td:nth-child(even) {
 					}
 				}
 			});
-		
+
+			//页面加载完成后，自动调用此初始化方法
 			initData(1);
 		});
-		
+
 		function initData(pageNum) {
-			
+
 			//1.发起ajax请求，获取分页数据
-			var json = {pageNum: 1, pageSize: 10};
+			var json = {
+				pageNum : pageNum,
+				pageSize : 2
+			};
 			var index = -1;
 			$.ajax({
-				type: 'post',
-				url: "${PATH}/role/loadData",
-				data: json,
-				beforeSend: function() {
-					index = layer.load(0,{time: 10*1000})
+				type : 'post',
+				url : "${PATH}/role/loadData",
+				data : json,
+				beforeSend : function() {
+					index = layer.load(0, {
+						time : 10 * 1000
+					})
 					return true;
 				},
-				success: function(result) {
+				success : function(result) {
 					//关闭弹层
 					layer.close(index);
-					
+
 					initShow(result);
-					
+
 					initNavg(result);
 				}
 			});
 		}
-		
+
 		//2.展示数据
 		function initShow(result) {
+
+			var list = result.list;
 			
+			$('tbody').empty();
+
+			$.each(list,function(i, e) {
+				
+				var tr = $('<tr></tr>');
+				
+				tr.append('<td>'+(i+1)+'</td>');
+				tr.append('<td><input type="checkbox"></td>');
+				tr.append('<td>'+e.name+'</td>');
+				
+				var td = $('<td></td>');
+				td.append('<button type="button" class="btn btn-success btn-xs"><i class=" glyphicon glyphicon-check"></i></button>');
+				td.append('<button type="button" class="btn btn-primary btn-xs"><i class=" glyphicon glyphicon-pencil"></i></button>');
+				td.append('<button type="button" class="btn btn-danger btn-xs"><i class=" glyphicon glyphicon-remove"></i></button>');
+				
+				tr.append(td);
+				
+				tr.appendTo($('tbody'));
+			});
 		}
-		
+
 		//3.展示分页条
 		function initNavg(result) {
 			
+			var navigatepageNums = result.navigatepageNums;
+			
+			$('.pagination').empty();
+			
+			if (result.isFirstPage) {
+				$('.pagination').append($('<li class="disabled"><a href="#">上一页</a></li>'));
+			} else {
+				$('.pagination').append($('<li ><a onclick="initData('+(result.pageNum-1)+')">上一页</a></li>'));
+			}
+			
+			
+			$.each(navigatepageNums, function(i, num) {
+				
+				if (num == result.pageNum) {
+					$('.pagination').append($('<li class="active"><a href="#">'+num+' <span class="sr-only">(current)</span></a></li>'));
+				} else {
+					$('.pagination').append($('<li><a onclick="initData('+num+')">'+num+'</a></li>'));
+				}
+			});
+			
+			if (result.isLastPage) {
+				$('.pagination').append($('<li class="disabled"><a href="#">下一页</a></li>'));
+			} else {
+				$('.pagination').append($('<li ><a onclick="initData('+(result.pageNum+1)+')">下一页</a></li>'));
+			}
+			
 		}
-
+		
 	</script>
 </body>
 </html>
