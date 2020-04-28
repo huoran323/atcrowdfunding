@@ -47,11 +47,11 @@ table tbody td:nth-child(even) {
 							<div class="form-group has-feedback">
 								<div class="input-group">
 									<div class="input-group-addon">查询条件</div>
-									<input class="form-control has-success" type="text"
+									<input id="condition" class="form-control has-success" type="text"
 										placeholder="请输入查询条件">
 								</div>
 							</div>
-							<button type="button" class="btn btn-warning">
+							<button id="queryBtn" type="button" class="btn btn-warning">
 								<i class="glyphicon glyphicon-search"></i> 查询
 							</button>
 						</form>
@@ -59,8 +59,7 @@ table tbody td:nth-child(even) {
 							style="float: right; margin-left: 10px;">
 							<i class=" glyphicon glyphicon-remove"></i> 删除
 						</button>
-						<button type="button" class="btn btn-primary" style="float: right;"
-							onclick="window.location.href='form.html'">
+						<button id="addBtn" type="button" class="btn btn-primary" style="float: right;">
 							<i class="glyphicon glyphicon-plus"></i> 新增
 						</button>
 						<br>
@@ -94,6 +93,51 @@ table tbody td:nth-child(even) {
 			</div>
 		</div>
 	</div>
+	
+		<!-- 添加数据 模态框 -->
+	<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title" id="myModalLabel">添加角色</h4>
+	      </div>
+	      <div class="modal-body">
+			  <div class="form-group">
+				<label for="exampleInputPassword1">角色名称</label>
+				<input type="text" class="form-control" id="name" name="name" placeholder="请输入角色名称">
+			  </div>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+	        <button id="saveBtn" type="button" class="btn btn-primary">保存</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	
+		<!-- 修改数据 模态框 -->
+	<div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title" id="myModalLabel">修改角色</h4>
+	      </div>
+	      <div class="modal-body">
+			  <div class="form-group">
+				<label for="exampleInputPassword1">角色名称</label>
+				<input type="hidden" name="id">
+				<input type="text" class="form-control" id="name" name="name" placeholder="请输入角色名称">
+			  </div>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+	        <button id="updateBtn" type="button" class="btn btn-primary">修改</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
 
 	<%@ include file="/WEB-INF/jsp/common/js.jsp"%>
 	<script type="text/javascript">
@@ -113,13 +157,16 @@ table tbody td:nth-child(even) {
 			initData(1);
 		});
 
+		var json = {
+				pageNum : 1,
+				pageSize : 2
+			};
+		
 		function initData(pageNum) {
 
 			//1.发起ajax请求，获取分页数据
-			var json = {
-				pageNum : pageNum,
-				pageSize : 2
-			};
+			json.pageNum = pageNum;
+			
 			var index = -1;
 			$.ajax({
 				type : 'post',
@@ -159,8 +206,8 @@ table tbody td:nth-child(even) {
 				
 				var td = $('<td></td>');
 				td.append('<button type="button" class="btn btn-success btn-xs"><i class=" glyphicon glyphicon-check"></i></button>');
-				td.append('<button type="button" class="btn btn-primary btn-xs"><i class=" glyphicon glyphicon-pencil"></i></button>');
-				td.append('<button type="button" class="btn btn-danger btn-xs"><i class=" glyphicon glyphicon-remove"></i></button>');
+				td.append('<button type="button" roleId="'+e.id+'" class="updateClass btn btn-primary btn-xs"><i class=" glyphicon glyphicon-pencil"></i></button>');
+				td.append('<button type="button" roleId="'+e.id+'" class="deleteClass btn btn-danger btn-xs"><i class=" glyphicon glyphicon-remove"></i></button>');
 				
 				tr.append(td);
 				
@@ -196,8 +243,109 @@ table tbody td:nth-child(even) {
 			} else {
 				$('.pagination').append($('<li ><a onclick="initData('+(result.pageNum+1)+')">下一页</a></li>'));
 			}
-			
 		}
+		
+		$("#queryBtn").click(function(){
+			
+			var condition = $("#condition").val();
+			
+			json.condition = condition;
+			initData(1);
+		})
+		
+		//添加模态框
+		$("#addBtn").click(function(){
+			$("#addModal").modal({
+				show: true,
+				backdrop: 'static',
+				keyboard: false
+			});
+		});
+		
+		$("#saveBtn").click(function() {
+			var name = $("#addModal input[name='name']").val();
+			
+			$.ajax({
+				type: 'post',
+				url: "${PATH}/role/doAdd",
+				data: {
+					name: name
+				},
+				beforeSend: function() {
+					return true;
+				},
+				success: function(res) {
+					if ("ok"==res) {
+						layer.msg("保存成功",{time:1000},function(){
+							$("#addModal").modal('hide');
+							//成功后 清空输入框的内容
+							$("#addModal input[name='name']").val("");
+							initData(1);
+						})
+					} else {
+						layer.msg("保存失败！");
+					}
+				}
+			});
+		});
+		
+		//修改
+		//.on为添加事件；为tbody下的class为updateClass的标签添加click事件
+		$('tbody').on('click','.updateClass', function() {
+			
+			//var roleId = this.roleId: //this -> Dom对象，dom对象不能获取自定义属性。
+			var roleId = $(this).attr("roleId");
+			
+			$.get("${PATH}/role/getRoleById",{id:roleId},function(res) {
+				$("#updateModal").modal({
+					show: true,
+					backdrop: 'static',
+					keyboard: false
+				});
+				$("#updateModal input[name='name']").val(res.name);
+				$("#updateModal input[name='id']").val(res.id);
+			});
+		});
+		
+		$("#updateBtn").click(function(){
+			var name = $("#updateModal input[name='name']").val();
+			var id = $("#updateModal input[name='id']").val();
+			$.post("${PATH}/role/doUpdate",{id:id,name:name},function(res) {
+				if ("ok"==res) {
+					layer.msg("修改成功！",{time:1000},function(){
+						$("#updateModal").modal("hide");
+						initData(json.pageNum);
+					});
+				} else {
+					layer.msg("修改失败！");
+				}
+			});
+		});
+		
+		//删除
+		$("tbody").on("click",".deleteClass",function(){
+			var roleId = $(this).attr("roleId");
+			
+			layer.confirm("您确定要删除吗？",{btn: ['确定','取消']},function(index){
+				
+				$.post("${PATH}/role/doDelete",{id:roleId},function(res) {
+					if ("ok"==res) {
+						layer.msg("删除成功！",{time:1000},function(){
+							
+							initData(json.pageNum);
+						});
+					} else {
+						layer.msg("删除失败！");
+					}
+				});
+				layer.close(index);	
+				
+			},function(index){
+				layer.close(index);	
+			});
+			
+			
+		});
 		
 	</script>
 </body>
