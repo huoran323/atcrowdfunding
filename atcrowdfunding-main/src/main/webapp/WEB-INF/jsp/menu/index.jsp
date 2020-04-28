@@ -87,8 +87,11 @@ table tbody td:nth-child(even) {
 			var json = {};
 			$.get(url, json, function(res) {
 				var zNodes = res;
-				zNodes.push({"id": 0,"name": "系统菜单","icon":""});
+				zNodes.push({"id": 0,"name": "系统菜单","icon":"glyphicon glyphicon-th-list"});
 				$.fn.zTree.init($("#treeDemo"), settings, zNodes);
+				
+				var treeObj = $.fn.zTree.getZTreeObj("treeDemo");
+				treeObj.expandAll(true);
 			});
 		}
 		
