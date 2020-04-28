@@ -49,4 +49,10 @@ public class TMenuServiceImpl implements TMenuService {
 		
 		return menuList;
 	}
+
+	@Override
+	public List<TMenu> listMenuAllTree() {
+		
+		return menuMapper.selectByExample(null);
+	}
 }
