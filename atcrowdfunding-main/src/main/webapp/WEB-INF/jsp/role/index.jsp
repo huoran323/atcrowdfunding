@@ -216,7 +216,7 @@ table tbody td:nth-child(even) {
 		}
 
 		//3.展示分页条
-		function initNavg(result) {
+		function initNavg(result) {   
 			
 			var navigatepageNums = result.navigatepageNums;
 			
